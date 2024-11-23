@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Programming Facts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-color: #f0f8ff;
+            --text-color: #333;
+            --button-bg-color: #007bff;
+            --button-text-color: #fff;
+            --container-bg-color: #fff;
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .fact-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: var(--container-bg-color);
+            box-shadow: var(--box-shadow);
+            transition: box-shadow 0.3s, transform 0.3s;
+            transform: scale(1);
+            animation: popIn 0.5s ease-out forwards;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--button-bg-color);
+            color: var(--button-text-color);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: darken(var(--button-bg-color), 10%);
+            transform: scale(1.05);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background-color: #333;
+                --text-color: #f0f8ff;
+                --container-bg-color: #444;
+                --button-bg-color: #0056b3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="fact-container">
+        <h1>Fun Programming Facts</h1>
+        <p id="fact"></p>
+        <button onclick="showRandomFact()">Show Another Fact</button>
+    </div>
+
+    <script>
+        const spaceFacts = [
+           "The first computer programmer was a woman: Ada Lovelace.",
+           "The first computer bug was an actual bug: found in 1947 by Grace Hopper.",
+           "The most expensive domain name ever sold was 'CarInsurance.com' for $49.7 million.",
+           "The 'Hello, World!' program originated from a 1978 book on C programming.",
+           "Java was originally called Oak and was renamed Java after a cafe.",
+           "The longest-running computer program ran for 67 years at the University of Stuttgart."
+        ];
+
+        function showRandomFact() {
+            const audio = new Audio('https://example.com/sound_effect.mp3'); // Add your sound file URL here
+            audio.play();
+            const randomIndex = Math.floor(Math.random() * spaceFacts.length);
+            document.getElementById('fact').innerText = spaceFacts[randomIndex];
+        }
+
+        // Show a fact when the page loads
+        showRandomFact();
+    </script>
+</body>
+</html>
